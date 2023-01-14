@@ -1,21 +1,19 @@
-var decrease = document.getElementById("decrease");
-var increase = document.getElementById("increase");
-var reset = document.getElementById("reset");
-var numberValue = document.getElementById("number");
+let count = 0
 
+const value = document.querySelector("#number")
+const btns = document.querySelectorAll(".btn")
 
-function decrement() {
-    if(numberValue.innerHTML <= 0) {
-        console.log(numberValue.innerHTML = 0);
-    } else {
-        numberValue.innerHTML = Number(numberValue.innerHTML) - 1;
-    }
-}
+btns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+        const styles = e.currentTarget.classList
+        if(styles.contains("decrease")) {
+            count--
+        } else if (styles.contains("increase")) {
+            count++
+        } else {
+            count = 0
+        }
+        value.textContent = count
+    })
+})
 
-function increment() {
-    numberValue.innerHTML = Number(numberValue.innerHTML) + 1;
-}
-
-function redefing() {
-    numberValue.innerHTML = 0;
-}
